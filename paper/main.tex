@@ -34,9 +34,8 @@
 
 \begin{abstract}
 \textbf{Resumen}---En este trabajo se investiga teórica y computacionalmente el frenado magnético inducido por corrientes de Foucault al caer un imán de neodimio por tubos conductores, inspirado en el diseño clásico de Rimstar Science Projects. Se implementó un modelo numérico fundamentado en las leyes de Maxwell-Faraday y Lenz, resolviendo las ecuaciones del movimiento mediante el algoritmo Runge-Kutta 4-5 adaptativo. Se compararon tres tubos de $1.00\ \mathrm{m}$ de longitud: cobre electrolítico ($\sigma = 5.96 \times 10^7\ \mathrm{S/m}$), aluminio 6061-T6 ($\sigma = 3.77 \times 10^7\ \mathrm{S/m}$) y PVC aislante como control en caída libre. En cobre, el imán ($28.5\ \mathrm{g}$) alcanzó una velocidad terminal constante de $(0.0915 \pm 0.0076)\ \mathrm{m/s}$ tras $9.3\ \mathrm{ms}$, registrando un tiempo de tránsito de $(10.97 \pm 0.94)\ \mathrm{s}$ frente a $0.463\ \mathrm{s}$ en PVC. Se comprobaron las leyes de escalamiento $b \propto R^{-4}$ y $v_t \propto \sigma^{-1}$, junto con la conversión del $99.96\%$ de la energía potencial gravitacional en calor por efecto Joule ($282.2\ \mathrm{mJ}$). La propagación analítica de incertidumbres concordó plenamente con simulaciones estocásticas de Monte Carlo ($N=1000$).
-\end{abstract}
 
-\begin{abstract}
+\vspace{0.8em}
 \textbf{Abstract}---This work presents a rigorous theoretical and computational investigation of eddy current magnetic braking for a cylindrical neodymium magnet falling through conductive pipes, inspired by the classic experiment from Rimstar Science Projects. A numerical model based on Maxwell-Faraday and Lenz laws was implemented, solving the equations of motion via an adaptive fourth-fifth order Runge-Kutta algorithm. Three $1.00\ \mathrm{m}$ tubes were evaluated: electrolytic copper ($\sigma = 5.96 \times 10^7\ \mathrm{S/m}$), 6061-T6 aluminum ($\sigma = 3.77 \times 10^7\ \mathrm{S/m}$), and insulating PVC as a free-fall control. In copper, the $28.5\ \mathrm{g}$ magnet reached a steady terminal velocity of $(0.0915 \pm 0.0076)\ \mathrm{m/s}$ after $9.3\ \mathrm{ms}$, yielding a total transit time of $(10.97 \pm 0.94)\ \mathrm{s}$ compared to $0.463\ \mathrm{s}$ in PVC. Scaling laws establishing that damping scales as $R^{-4}$ and terminal velocity scales inversely with conductivity ($v_t \propto \sigma^{-1}$) were verified. Energy analysis demonstrated that gravitational potential energy was entirely dissipated through Joule heating ($282.2\ \mathrm{mJ}$). Analytical uncertainty propagation showed complete agreement with Monte Carlo distributions ($N=1000$).
 \end{abstract}
 
@@ -113,23 +112,25 @@ La geometría del ducto conductor corresponde a tubos de $L = 1.000\ \mathrm{m}$
 
 \begin{table}[htbp]
 \centering
+\footnotesize
+\setlength{\tabcolsep}{2.5pt}
 \caption{Parámetros físicos, geométricos y electromagnéticos nominales empleados en la simulación computacional del experimento de Rimstar.}
 \label{tab:parametros}
 \begin{ruledtabular}
 \begin{tabular}{lccc}
-\textbf{Parámetro} & \textbf{Símbolo} & \textbf{Valor Nominal} & \textbf{Incertidumbre} \\
+\textbf{Parámetro} & \textbf{Símbolo} & \textbf{Nominal} & \textbf{Incertidumbre} \\
 \hline
 Masa del imán & $m_0$ & $28.50\ \mathrm{g}$ & $\pm 0.20\ \mathrm{g}$ \\
 Radio del imán & $a$ & $7.50\ \mathrm{mm}$ & $\pm 0.05\ \mathrm{mm}$ \\
 Longitud del imán & $2h$ & $10.00\ \mathrm{mm}$ & $\pm 0.05\ \mathrm{mm}$ \\
-Momento dipolar efectivo & $m_{\mathrm{eff}}$ & $0.820\ \mathrm{A\cdot m^2}$ & $\pm 0.025\ \mathrm{A\cdot m^2}$ \\
+Momento dipolar & $m_{\mathrm{eff}}$ & $0.820\ \mathrm{A\cdot m^2}$ & $\pm 0.025\ \mathrm{A\cdot m^2}$ \\
 Longitud del tubo & $L$ & $1.000\ \mathrm{m}$ & $\pm 0.002\ \mathrm{m}$ \\
-Radio medio del tubo & $R$ & $11.50\ \mathrm{mm}$ & $\pm 0.10\ \mathrm{mm}$ \\
-Espesor de pared & $\Delta R$ & $1.20\ \mathrm{mm}$ & $\pm 0.05\ \mathrm{mm}$ \\
-Conductividad Cobre & $\sigma_{\mathrm{Cu}}$ & $5.96 \times 10^7\ \mathrm{S/m}$ & $\pm 0.06 \times 10^7\ \mathrm{S/m}$ \\
-Conductividad Aluminio & $\sigma_{\mathrm{Al}}$ & $3.77 \times 10^7\ \mathrm{S/m}$ & $\pm 0.05 \times 10^7\ \mathrm{S/m}$ \\
-Conductividad PVC (control) & $\sigma_{\mathrm{PVC}}$ & $\approx 10^{-12}\ \mathrm{S/m}$ & --- \\
-Aceleración gravitacional & $g$ & $9.80665\ \mathrm{m/s^2}$ & --- \\
+Radio medio tubo & $R$ & $11.50\ \mathrm{mm}$ & $\pm 0.10\ \mathrm{mm}$ \\
+Espesor pared & $\Delta R$ & $1.20\ \mathrm{mm}$ & $\pm 0.05\ \mathrm{mm}$ \\
+Conductividad Cu & $\sigma_{\mathrm{Cu}}$ & $5.96 \cdot 10^7\ \frac{\mathrm{S}}{\mathrm{m}}$ & $\pm 0.06 \cdot 10^7\ \frac{\mathrm{S}}{\mathrm{m}}$ \\
+Conductividad Al & $\sigma_{\mathrm{Al}}$ & $3.77 \cdot 10^7\ \frac{\mathrm{S}}{\mathrm{m}}$ & $\pm 0.05 \cdot 10^7\ \frac{\mathrm{S}}{\mathrm{m}}$ \\
+Conductividad PVC & $\sigma_{\mathrm{PVC}}$ & $\approx 10^{-12}\ \frac{\mathrm{S}}{\mathrm{m}}$ & --- \\
+Gravedad local & $g$ & $9.807\ \mathrm{m/s^2}$ & --- \\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
@@ -176,11 +177,13 @@ A partir de dicho instante, el movimiento se torna estrictamente rectilíneo y u
 
 \begin{table*}[htbp]
 \centering
+\small
+\setlength{\tabcolsep}{4.5pt}
 \caption{Comparación cuantitativa de los resultados de simulación computacional: coeficientes de amortiguamiento magnético $b$, velocidad terminal asintótica $v_t$, tiempo total de tránsito $t_{\mathrm{caída}}$ a lo largo de $1.00\ \mathrm{m}$, y balance de incertidumbres por análisis analítico y método de Monte Carlo ($N=1000$).}
 \label{tab:resultados}
 \begin{ruledtabular}
 \begin{tabular}{lcccccc}
-\textbf{Material del Tubo} & $b\ [\mathrm{N\cdot s/m}]$ & $v_t\ \text{(Analítico)}\ [\mathrm{m/s}]$ & $v_t\ \text{(Monte Carlo)}\ [\mathrm{m/s}]$ & $t_{\mathrm{caída}}\ [\mathrm{s}]$ & Disipación $E_{\mathrm{Joule}}\ [\mathrm{mJ}]$ & Error Relativo $\delta v_t / v_t$ \\
+\textbf{Material del Tubo} & $b\ [\mathrm{N\cdot s/m}]$ & $v_t\ \text{(Analítico)}\ [\mathrm{m/s}]$ & $v_t\ \text{(Monte Carlo)}\ [\mathrm{m/s}]$ & $t_{\mathrm{caída}}\ [\mathrm{s}]$ & $E_{\mathrm{Joule}}\ [\mathrm{mJ}]$ & Error $\delta v_t / v_t$ \\
 \hline
 Cobre Electrolítico & $3.053 \pm 0.251$ & $0.0915 \pm 0.0076$ & $0.0924 \pm 0.0080$ & $10.97 \pm 0.94$ & $282.2$ & $8.3\%$ \\
 Aluminio 6061-T6 & $1.931 \pm 0.160$ & $0.1447 \pm 0.0120$ & $0.1461 \pm 0.0127$ & $6.98 \pm 0.60$ & $281.2$ & $8.3\%$ \\
@@ -316,25 +319,26 @@ Calculando las derivadas parciales de primer orden:
 \end{align}
 
 Asumiendo que las incertidumbres de las variables independientes no están correlacionadas, la ley de propagación gaussiana de covarianza nula establece:
-\begin{equation}
-\left( \frac{\delta v_t}{v_t} \right)^2 = \left( \frac{\delta m_0}{m_0} \right)^2 + 16\left( \frac{\delta R}{R} \right)^2 + 4\left( \frac{\delta m_{\mathrm{eff}}}{m_{\mathrm{eff}}} \right)^2 + \left( \frac{\delta \sigma}{\sigma} \right)^2 + \left( \frac{\delta \Delta R}{\Delta R} \right)^2.
-\label{eq:propagacion_cuadratica}
-\end{equation}
+\begin{align}
+\left( \frac{\delta v_t}{v_t} \right)^2 &= \left( \frac{\delta m_0}{m_0} \right)^2 + 16\left( \frac{\delta R}{R} \right)^2 + 4\left( \frac{\delta m_{\mathrm{eff}}}{m_{\mathrm{eff}}} \right)^2 \nonumber \\
+&\quad + \left( \frac{\delta \sigma}{\sigma} \right)^2 + \left( \frac{\delta \Delta R}{\Delta R} \right)^2. \label{eq:propagacion_cuadratica}
+\end{align}
 
-Evaluando con los valores numéricos nominales e incertidumbres de la Tabla~\ref{tab:parametros} para el cobre:
+Evaluando con los valores nominales e incertidumbres de la Tabla~\ref{tab:parametros} para el cobre:
 \begin{align*}
-\frac{\delta m_0}{m_0} &= \frac{0.20}{28.50} = 0.0070\ (0.70\%), \\
-4\frac{\delta R}{R} &= 4 \times \frac{0.10}{11.50} = 0.0348\ (3.48\%), \\
-2\frac{\delta m_{\mathrm{eff}}}{m_{\mathrm{eff}}} &= 2 \times \frac{0.025}{0.820} = 0.0610\ (6.10\%), \\
-\frac{\delta \sigma}{\sigma} &= \frac{0.06}{5.96} = 0.0101\ (1.01\%), \\
-\frac{\delta \Delta R}{\Delta R} &= \frac{0.05}{1.20} = 0.0417\ (4.17\%).
+\frac{\delta m_0}{m_0} &= \frac{0.20}{28.50} = 0.70\%, \\
+4\frac{\delta R}{R} &= 4 \cdot \frac{0.10}{11.50} = 3.48\%, \\
+2\frac{\delta m_{\mathrm{eff}}}{m_{\mathrm{eff}}} &= 2 \cdot \frac{0.025}{0.820} = 6.10\%, \\
+\frac{\delta \sigma}{\sigma} &= \frac{0.06}{5.96} = 1.01\%, \\
+\frac{\delta \Delta R}{\Delta R} &= \frac{0.05}{1.20} = 4.17\%.
 \end{align*}
 
 Sumando en cuadratura:
-\begin{equation}
-\frac{\delta v_t}{v_t} = \sqrt{(0.0070)^2 + (0.0348)^2 + (0.0610)^2 + (0.0101)^2 + (0.0417)^2} \approx 0.0827\ (8.3\%).
-\label{eq:resultado_incertidumbre}
-\end{equation}
+\begin{align}
+\frac{\delta v_t}{v_t} &= \Big[ (0.0070)^2 + (0.0348)^2 + (0.0610)^2 \nonumber \\
+&\qquad + (0.0101)^2 + (0.0417)^2 \Big]^{1/2} \nonumber \\
+&\approx 0.0827\ (8.3\%). \label{eq:resultado_incertidumbre}
+\end{align}
 
 Multiplicando por la velocidad terminal nominal $v_{t,\mathrm{Cu}} = 0.0915\ \mathrm{m/s}$:
 \begin{equation}
