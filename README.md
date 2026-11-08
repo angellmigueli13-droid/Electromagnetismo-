@@ -108,3 +108,8 @@ pdflatex main.tex
 6. **Saslow, W. M.** (1992). *Maxwell's theory of eddy currents in thin conducting sheets, and applications to electromagnetic damping and levitation*. American Journal of Physics, 60(8), 693–711.
 7. **Partovi, M. H., & Morris, D.** (2006). *Electrodynamics of a magnet moving through a conducting pipe*. Canadian Journal of Physics, 84(4), 253–271.
 8. **Taylor, J. R.** (1997). *An Introduction to Error Analysis: The Study of Uncertainties in Physical Measurements* (2nd ed.). University Science Books.
+
+---
+
+## 🤖 Declaración de Asistencia de Inteligencia Artificial
+El modelado computacional, la resolución numérica de ecuaciones diferenciales ordinarias, el procesamiento de incertidumbres y la redacción/maquetación en LaTeX de este proyecto contaron con el soporte de herramientas de Inteligencia Artificial (Antigravity / Gemini), bajo la dirección, supervisión y validación científica de los autores Dilan Correa y Miguel Vega.
