@@ -2,8 +2,10 @@
 Simulación Rigurosa: Frenado Magnético y Ley de Lenz en Tubos Conductores
 Basado en el experimento clásico de Rimstar Science Projects
 Proyecto Final de Laboratorio de Electromagnetismo - Universidad de La Salle
+Profesor: Fernando Vergara
 
-Autores: Pareja de Laboratorio (Tema 12)
+Autores: Dilan Correa y Miguel Vega (Tema 12)
+Repositorio: https://github.com/angellmigueli13-droid/Electromagnetismo-
 """
 
 import os

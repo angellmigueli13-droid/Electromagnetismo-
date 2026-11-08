@@ -3,7 +3,9 @@
 **Universidad de La Salle**  
 **Escuela de Ciencias Básicas y Aplicadas — Laboratorio de Electromagnetismo**  
 **Profesor:** Fernando Vergara  
+**Integrantes:** Dilan Correa & Miguel Vega  
 **Tema Asignado:** Tema 12 — Frenado Magnético y Ley de Lenz en Tubos Conductores  
+**Repositorio Oficial:** [https://github.com/angellmigueli13-droid/Electromagnetismo-](https://github.com/angellmigueli13-droid/Electromagnetismo-)  
 **Ecuación Rectora:**
 $$mg - bv = m\frac{dv}{dt} \implies \varepsilon = -\frac{d\Phi}{dt}$$
 
