@@ -7,6 +7,7 @@ Autores: Pareja de Laboratorio (Tema 12)
 """
 
 import os
+import sys
 import numpy as np
 from scipy.integrate import solve_ivp, trapezoid
 import matplotlib.pyplot as plt
@@ -276,7 +277,6 @@ fig1_path_pdf = os.path.join(FIGURES_DIR, "fig1_trajectories.pdf")
 fig1_path_png = os.path.join(FIGURES_DIR, "fig1_trajectories.png")
 fig1.savefig(fig1_path_pdf)
 fig1.savefig(fig1_path_png)
-plt.close(fig1)
 print("Figura 1 guardada.")
 
 # FIGURA 2: Leyes de Escalamiento Físico: b vs R (R^-4) y v_t vs sigma (sigma^-1)
@@ -320,7 +320,6 @@ fig2_path_pdf = os.path.join(FIGURES_DIR, "fig2_scaling_laws.pdf")
 fig2_path_png = os.path.join(FIGURES_DIR, "fig2_scaling_laws.png")
 fig2.savefig(fig2_path_pdf)
 fig2.savefig(fig2_path_png)
-plt.close(fig2)
 print("Figura 2 guardada.")
 
 # FIGURA 3: Análisis de Errores: Datos Sintéticos con Barras de Error vs Teoría + Histograma Monte Carlo
@@ -373,7 +372,6 @@ fig3_path_pdf = os.path.join(FIGURES_DIR, "fig3_error_analysis.pdf")
 fig3_path_png = os.path.join(FIGURES_DIR, "fig3_error_analysis.png")
 fig3.savefig(fig3_path_pdf)
 fig3.savefig(fig3_path_png)
-plt.close(fig3)
 print("Figura 3 guardada.")
 
 # FIGURA 4: Balance Energético y Disipación por Efecto Joule
@@ -412,7 +410,6 @@ fig4_path_pdf = os.path.join(FIGURES_DIR, "fig4_energy_balance.pdf")
 fig4_path_png = os.path.join(FIGURES_DIR, "fig4_energy_balance.png")
 fig4.savefig(fig4_path_pdf)
 fig4.savefig(fig4_path_png)
-plt.close(fig4)
 print("Figura 4 guardada.")
 
 # -------------------------------------------------------------
@@ -493,3 +490,10 @@ print("\n--- RESUMEN DE RESULTADOS GENERADOS ---")
 print(f"Cobre:    v_t = {vt_cu_an:.4f} +/- {dvt_cu_an:.4f} m/s | t_caída = {tfall_cu_nom:.2f} s")
 print(f"Aluminio: v_t = {vt_al_an:.4f} +/- {dvt_al_an:.4f} m/s | t_caída = {tfall_al_nom:.2f} s")
 print(f"PVC:      v_t = {trajectories['PVC']['v'][-1]:.4f} m/s | t_caída = {tfall_pvc_nom:.3f} s")
+
+# Mostrar las ventanas interactivas en pantalla si no se pasa --no-show
+if "--no-show" not in sys.argv:
+    print("\nAbriendo ventanas interactivas de las 4 figuras en pantalla...")
+    plt.show()
+else:
+    plt.close("all")
